@@ -4,26 +4,28 @@ using namespace std;
 
 int main()
 {
-    int arr[10] = {4, 6, 2, 5, 9, 1, 3, 10, 55, 0};
-    int i, j, min, index;
+    int n, k;
+    int i, j;
+    cout << "Enter size of array: ";
+    cin >> n;
     
-    index = 0;
+    int *arr = new int[n];
     
-    for(i=0;i<10;i++) {
-        min = 999;
-        for(j=i ; j < 10 ; j++) {
-            if(min > arr[j]) {
-                min = arr[j];
-                index = j;
-            }
+    for(i=0;i<n;i++) {
+        cin >> *(arr+i);
+    }
+    
+    for(i=0;i<n;i++) {
+        j=i;
+        
+        while(j>0 && arr[j-1]>arr[j]) {
+            swap(arr[j-1], arr[j]);
+            j--;
         }
         
-        swap(arr[i], arr[index]);
+        for(k=0;k<=i;k++) {
+            cout << arr[k] << " ";
+        }
+        cout << endl;
     }
-    
-    for ( int n:arr) {
-        cout << n << " ";
-    }
-    cout << endl;
-    
 }
